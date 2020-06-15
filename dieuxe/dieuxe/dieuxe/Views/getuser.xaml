@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="dieuxe.Views.getuser">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Log Out"
+                         Command="{Binding LogoutCommand}" Clicked="Logout_Clicked"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+
+            <ListView   IsPullToRefreshEnabled="True" x:Name="userlistview" ItemsSource="{Binding User}" HasUnevenRows="True">
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical" Padding="12,6">
+                                <Label Text="demo" FontSize="24"/>
+                                <Label Text="{Binding  User.tennv}" FontSize="24"/>
+                                <Label Text="{Binding  User.manv}" FontSize="24"/>
+                                <Label Text="{Binding  User.PhoneNumber}" FontSize="24"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="dieuxe.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <Color x:Key="PrimaryColor">#804000</Color>
+            <Color x:Key="DarkColor">#9b003d</Color>
+            <Color x:Key="DarkTextColor">#ffffff</Color>
+
+            <Style x:Key="DarkButtonStyle"
+                   TargetType="Button">
+                <Setter Property="HeightRequest"
+                        Value="40" />
+                <Setter Property="CornerRadius"
+                        Value="5" />
+                <Setter Property="TextColor"
+                        Value="{StaticResource DarkTextColor}" />
+                <Setter Property="BackgroundColor"
+                        Value="{StaticResource DarkColor}" />
+            </Style>
+
+
+            <Color x:Key="BorderColor">#D8D8D8</Color>
+
+            <Style x:Key="PageStyle" TargetType="ContentPage">
+                <Setter Property="BackgroundColor" Value="#D1EEF2" />
+                <Setter Property="Padding" Value="15" />
+            </Style>
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="#B02792" />
+                <Setter Property="FontSize" Value="Medium" />
+            </Style>
+            <Style x:Key="EntryStyle" TargetType="Entry">
+                <Setter Property="TextColor" Value="#4DEE71" />
+                <Setter Property="PlaceholderColor" Value="#4DEE71"/>
+                <Setter Property="Margin" Value="5,0,0,5"></Setter>
+            </Style>
+            <Style x:Key="DatePickerStyle" TargetType="DatePicker">
+                <Setter Property="TextColor" Value="#4DEE71" />
+                <Setter Property="Margin" Value="5,0,0,5"></Setter>
+            </Style>
+            <Style x:Key="TimePickerStyle" TargetType="TimePicker">
+                <Setter Property="TextColor" Value="#4DEE71" />
+                <Setter Property="Margin" Value="5,0,0,5"></Setter>
+            </Style>
+
+            <Style TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#3981ED" />
+                <Setter Property="TextColor" Value="#FFFFFF" />
+            </Style>
+
+            <Style x:Key="FrameStyle" TargetType="Frame">
+                <Setter Property="HasShadow" Value="False" />
+                <Setter Property="Padding" Value="0,-5" />
+                <Setter Property="CornerRadius" Value="5" />
+                <Setter Property="BorderColor" Value="{StaticResource BorderColor}" />
+            </Style>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

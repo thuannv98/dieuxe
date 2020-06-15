@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="dieuxe.Views.QuanLy">
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <StackLayout VerticalOptions="Start" Orientation="Horizontal" HorizontalOptions="End" AbsoluteLayout.LayoutBounds="0, 0, 1, 50" AbsoluteLayout.LayoutFlags="WidthProportional">
+                <Label x:Name="username" Text="Nhân viên" />
+                <Image Source="account.png" WidthRequest="20" HeightRequest="20"/>
+            </StackLayout>
+            <Button x:Name="buttonphantich" Text="Gom nhóm các chuyến đi này" Clicked="buttonphantich_Clicked" BorderColor="#690896" BorderWidth="1" BackgroundColor="Azure" CornerRadius="10" TextColor="#690896"
+                    AbsoluteLayout.LayoutBounds="1, 50, 230, 40" AbsoluteLayout.LayoutFlags="XProportional" />
+            <Label Text="Lịch đăng ký công tác hôm nay" AbsoluteLayout.LayoutBounds="0, 100, 250, 30" AbsoluteLayout.LayoutFlags="XProportional" />
+            <Label Text="Ấn từng mục để xem chi tiết" FontSize="Small" AbsoluteLayout.LayoutBounds="0, 130, 250, 20" AbsoluteLayout.LayoutFlags="XProportional" />
+            <ListView x:Name="danhsachdangky" ItemTapped="chitietdangky" IsPullToRefreshEnabled="True" ItemsSource="{Binding DanhSachDangKy}" HasUnevenRows="True"
+                      AbsoluteLayout.LayoutBounds="0, 160, 1, 1" AbsoluteLayout.LayoutFlags="SizeProportional" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical" Padding="12,6">
+                                <Label Text="{Binding ngaydangky}"/>
+                                <Label Text="{Binding nhanviendangky}"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <ContentView x:Name="popupcontent" BackgroundColor="#C0808080" Padding="10, 0" IsVisible="false" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
+                <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                    <Frame x:Name="popuplayout" HasShadow="True"  Scale="0" BackgroundColor="White" >
+                        <Grid>
+                            <Label Text="Ngày đăng ký: " Grid.Row="0" Grid.Column="0" />
+                            <Label Text="Nhân viên: " Grid.Row="1" Grid.Column="0" />
+                            <Label Text="Số người: " Grid.Row="2" Grid.Column="0" />
+                            <Label Text="Nơi đón: " Grid.Row="3" Grid.Column="0" />
+                            <Label Text="Nơi đến: " Grid.Row="4" Grid.Column="0" />
+                            <Label Text="Giờ đến: " Grid.Row="5" Grid.Column="0" />
+                            <Label Text="Giờ về: " Grid.Row="6" Grid.Column="0" />
+
+                            <Label x:Name="chitietngaydangky" Grid.Row="0" Grid.Column="1" />
+                            <Label x:Name="chitietnhanvien" Grid.Row="1" Grid.Column="1" />
+                            <Label x:Name="chitietsonguoi" Grid.Row="2" Grid.Column="1" />
+                            <Label x:Name="chitietnoidon" Grid.Row="3" Grid.Column="1" />
+                            <Label x:Name="chitietnoiden" Grid.Row="4" Grid.Column="1" />
+                            <Label x:Name="chitietgioden" Grid.Row="5" Grid.Column="1" />
+                            <Label x:Name="chitietgiove" Grid.Row="6" Grid.Column="1" />
+                            
+                            <Button Text="Đóng" Grid.Row="7" Grid.Column="1" Clicked="close" />
+                        </Grid>
+                    </Frame>
+                </StackLayout>
+            </ContentView>
+
+            <!--<ContentView x:Name="popupLoginView" BackgroundColor="#C0808080" Padding="10, 0" IsVisible="false" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
+                <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                    <StackLayout Orientation="Vertical" HeightRequest="200" WidthRequest="300" BackgroundColor="White">
+                        <Entry Margin="20,20,20,10" Placeholder="Enter Username"></Entry>
+                        <Entry Margin="20,0,20,0" Placeholder="Enter Password"></Entry>
+                        <Button Margin="20,0,20,0" Text="Login"></Button>
+                    </StackLayout>
+                </StackLayout>
+            </ContentView>
+
+            <ContentView x:Name="popupLoadingView" BackgroundColor="#C0808080" Padding="10, 0" IsVisible="false" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
+                <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                    <StackLayout Orientation="Vertical" HeightRequest="150" WidthRequest="200" BackgroundColor="White">
+
+                        <ActivityIndicator x:Name="activityIndicator" Margin="0,50,0,0" VerticalOptions="Center" HorizontalOptions="Center" Color="Black" WidthRequest="30" HeightRequest="30" ></ActivityIndicator>
+                        <Label x:Name="lblLoadingText" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Center" VerticalTextAlignment="Center" Text="Loading..."></Label>
+                    </StackLayout>
+                </StackLayout>
+            </ContentView>
+
+            <ContentView x:Name="popupListView" BackgroundColor="#C0808080" Padding="10, 0" IsVisible="false" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
+                <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                    <StackLayout Orientation="Vertical" HeightRequest="200" WidthRequest="300" BackgroundColor="White">
+                        <ListView x:Name="sampleList">
+                        </ListView>
+                    </StackLayout>
+                </StackLayout>
+            </ContentView>-->
+            
+            
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>
