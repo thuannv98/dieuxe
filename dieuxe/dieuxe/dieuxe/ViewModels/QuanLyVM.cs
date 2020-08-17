@@ -225,7 +225,7 @@ namespace dieuxe.ViewModels
         {
             dsLuotDi = new List<point_detail> { new point_detail { id = 1, songuoi = 2, thoigianden = "DS", thoigianve = "##" } };
             //this.map = map;
-            MapFunction.Mapkey = "AIzaSyDdwwJvAyOQWpSPj8pUxnDH8Whe9X-BxhA";
+            MapFunction.Mapkey = "";
             phantichcum = new Command(phantich);
             this.test = new Command(testfunction);
 
