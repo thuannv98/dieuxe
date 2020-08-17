@@ -102,7 +102,8 @@
                    AbsoluteLayout.LayoutBounds="20,310,0.6,0.06"
                    AbsoluteLayout.LayoutFlags="SizeProportional"  
                    >
-                        <control:CustomDatePicker x:Name="ngayden"  Date="{Binding ThoiGianDen }" DateSelected="ngayden_DateSelected"  Format="D" WidthRequest="180" Style="{StaticResource DatePickerStyle}"/>
+                        <control:CustomDatePicker x:Name="ngayden"  Date="{Binding ThoiGianDen }" DateSelected="ngayden_DateSelected"  Format="D" WidthRequest="180" 
+                                                  Style="{StaticResource DatePickerStyle}"/>
                     </Frame>
                     <Frame Style="{StaticResource FrameStyle}" 
                    AbsoluteLayout.LayoutBounds="0.91,310,0.2,0.06"
