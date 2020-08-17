@@ -19,7 +19,7 @@ namespace dieuxe
         {
             CultureInfo culture = CultureInfo.CreateSpecificCulture("en-US");
             CultureInfo.DefaultThreadCurrentCulture = culture;
-            MapFunction.Mapkey = "AIzaSyDdwwJvAyOQWpSPj8pUxnDH8Whe9X-BxhA";
+            MapFunction.Mapkey = "";
             //LocationUpdateService = DependencyService.Get<ILocationUpdateService>();
             //LocationUpdateService.LocationChanged += LocationUpdateService_LocationChanged;
             //Settings.AccessToken = null;
