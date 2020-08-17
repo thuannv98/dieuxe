@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Hoc tap\\KLTN\\source\\dieuxe\\dieuxe\\dieuxe\\dieuxe.csproj": {}
+    "D:\\Hoc tap\\KLTN\\source\\dieuxe\\dieuxe\\dieuxe\\dieuxe\\dieuxe.csproj": {}
   },
   "projects": {
-    "D:\\Hoc tap\\KLTN\\source\\dieuxe\\dieuxe\\dieuxe\\dieuxe.csproj": {
+    "D:\\Hoc tap\\KLTN\\source\\dieuxe\\dieuxe\\dieuxe\\dieuxe\\dieuxe.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Hoc tap\\KLTN\\source\\dieuxe\\dieuxe\\dieuxe\\dieuxe.csproj",
+        "projectUniqueName": "D:\\Hoc tap\\KLTN\\source\\dieuxe\\dieuxe\\dieuxe\\dieuxe\\dieuxe.csproj",
         "projectName": "dieuxe",
-        "projectPath": "D:\\Hoc tap\\KLTN\\source\\dieuxe\\dieuxe\\dieuxe\\dieuxe.csproj",
+        "projectPath": "D:\\Hoc tap\\KLTN\\source\\dieuxe\\dieuxe\\dieuxe\\dieuxe\\dieuxe.csproj",
         "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-        "outputPath": "D:\\Hoc tap\\KLTN\\source\\dieuxe\\dieuxe\\dieuxe\\obj\\",
+        "outputPath": "D:\\Hoc tap\\KLTN\\source\\dieuxe\\dieuxe\\dieuxe\\dieuxe\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
@@ -60,6 +60,22 @@
               "target": "Package",
               "version": "[12.0.3, )"
             },
+            "Plugin.Badge": {
+              "target": "Package",
+              "version": "[2.3.0, )"
+            },
+            "Plugin.Permissions": {
+              "target": "Package",
+              "version": "[6.0.1, )"
+            },
+            "System.Reactive": {
+              "target": "Package",
+              "version": "[4.4.1, )"
+            },
+            "Xam.Plugin.Geolocator": {
+              "target": "Package",
+              "version": "[4.5.0.6, )"
+            },
             "Xam.Plugins.Settings": {
               "target": "Package",
               "version": "[3.1.1, )"
@@ -87,7 +103,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
         }
       }
     }

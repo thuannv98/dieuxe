@@ -1,0 +1,286 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps" 
+             xmlns:control="clr-namespace:dieuxe.CustomControl" 
+             mc:Ignorable="d"
+             x:Class="dieuxe.Views.Page1" x:Name="page">
+    <ContentPage.Content>
+
+        <StackLayout VerticalOptions="EndAndExpand"  
+             HorizontalOptions="FillAndExpand"
+             Padding="20,40">
+            <!--<Button x:Name="RegisterButton"
+            Text="Register"
+            Clicked="RegisterButtonClicked" />
+            <Button x:Name="DeregisterButton"
+            Text="Deregister"
+            Clicked="DeregisterButtonClicked" />-->
+
+            <Button Text="Gửi thông báo cho quang@gmail.com" Clicked="guitbquang" />
+            <Button Text="Gửi thông báo cho thuan@gmail.com" Clicked="guitbthuan" />
+            <Button Text="Gửi thông báo cho t@gmail.com" Clicked="guitbt" />
+        </StackLayout>
+
+        <!--<control:CustomMap x:Name="customMap" MapType="Street" />-->
+
+        <!--<StackLayout>
+            <Label Text="dsd" />
+
+            <ListView ItemsSource="{Binding list}" BindingContext="{x:Reference page}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Label Text="{Binding thoigianden}" />
+                            </StackLayout>
+                            
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>-->
+        <!--<AbsoluteLayout >
+            <Frame HasShadow="True" >
+                <StackLayout>
+                    <StackLayout>
+                        <Label Text="a"/>
+                    </StackLayout>
+                <Label Text="Default" />
+                </StackLayout>
+            </Frame>-->
+            <!--<Frame BackgroundColor="LightGray"
+                   BorderColor="Orange"
+                   CornerRadius="10"
+                   HasShadow="False">
+                <Label Text="HasShadow False (platform dependent)" />
+            </Frame>
+            <Frame BackgroundColor="LightGray"
+                   BorderColor="Orange"
+                   CornerRadius="10"
+                   HasShadow="True">
+                <Label Text="HasShadow True (platform dependent)" />
+            </Frame>
+            <Frame Margin="10"
+                   BorderColor="Black"
+                   CornerRadius="50"
+                   HeightRequest="60"
+                   WidthRequest="60"
+                   IsClippedToBounds="True"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center">
+                <Image Source="outdoors.jpg"
+                       Aspect="AspectFill"
+                       Margin="-20"
+                       HeightRequest="100"
+                       WidthRequest="100" />
+            </Frame>
+            <Frame BorderColor="Gray"
+                   CornerRadius="5"
+                   Padding="8">
+                <StackLayout>
+                    <Label Text="Card Example"
+                           FontSize="Medium"
+                           FontAttributes="Bold" />
+                    <BoxView Color="Gray"
+                             HeightRequest="2"
+                             HorizontalOptions="Fill" />
+                    <Label Text="Frames can wrap more complex layouts to create more complex UI components, such as this card!" />
+                </StackLayout>
+            </Frame>-->
+        <!--</AbsoluteLayout>-->
+        <!--<StackLayout BackgroundColor="Green">
+            <StackLayout BackgroundColor="LightYellow">
+                <ListView x:Name="lv" HasUnevenRows="True" ItemsSource="{Binding .}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Label Text="{Binding DiaChi}" />
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Label Text="â" />
+            </StackLayout>
+            <Label Text="ad"  />
+        </StackLayout>-->
+
+        <!--<StackLayout BackgroundColor="Green">
+            <StackLayout Spacing="0" BackgroundColor="Yellow" VerticalOptions="Start" >
+                <Button Text="change" Command="{Binding change}" />
+                <ListView x:Name="lv" HasUnevenRows="True" ItemsSource="{Binding L, Mode=TwoWay}"  BackgroundColor="Cornsilk" MinimumHeightRequest="100">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout>
+                                    <Label Text="{Binding DiaChi}" />
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </StackLayout>-->
+
+        <!--<StackLayout BackgroundColor="Green">
+            <StackLayout BackgroundColor="DarkSalmon" HeightRequest="300" >
+                <ListView ItemsSource="{Binding .}" HeightRequest="200" BackgroundColor="Cyan" VerticalOptions="Fill">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Label Text="{Binding DiaChi}" />
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Label Text="x" />
+            </StackLayout>
+        </StackLayout>-->
+
+        <!--<Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height=".65*"/>
+                <RowDefinition Height=".35*"/>
+            </Grid.RowDefinitions>
+            <ScrollView Grid.Row="0">
+                <StackLayout Spacing="10" Padding="10">
+                    <Button x:Name="ButtonTrack" Text="Track Movement" Clicked="ButtonTrack_Clicked"/>
+
+                    <Label Text="Location Options"/>
+
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Include Heading" HorizontalOptions="Center"/>
+                        <Switch x:Name="TrackIncludeHeading" IsToggled="false" HorizontalOptions="Center"/>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal">
+                        <Label BindingContext="{x:Reference TrackTimeout}" Text="{Binding Value,
+                          StringFormat='Min Time Between Updates = {0:F0} Seconds'}"/>
+                        <Stepper x:Name="TrackTimeout" Maximum="60"  Minimum="0" Increment="1" Value="1"/>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal">
+                        <Label BindingContext="{x:Reference TrackDistance}" Text="{Binding Value,
+                          StringFormat='Min Distance Between = {0:F0} Meters'}"/>
+                        <Stepper x:Name="TrackDistance" Maximum="1000"  Minimum="0" Increment="1" Value="1"/>
+                    </StackLayout>
+
+                    <StackLayout>
+                        <StackLayout.IsVisible>
+                            <OnPlatform x:TypeArguments="x:Boolean" iOS="true" WinPhone="false" Android="false"/>
+                        </StackLayout.IsVisible>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Allow Background Updates" HorizontalOptions="Center"/>
+                            <Switch x:Name="AllowBackgroundUpdates" IsToggled="false" HorizontalOptions="Center"/>
+                        </StackLayout>
+
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Listen for Significant Changes" HorizontalOptions="Center"/>
+                            <Switch x:Name="ListenForSig" IsToggled="false" HorizontalOptions="Center"/>
+                        </StackLayout>
+
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Pause Location Updates Auto" HorizontalOptions="Center"/>
+                            <Switch x:Name="PauseLocation" IsToggled="false" HorizontalOptions="Center"/>
+                        </StackLayout>
+
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Defer Location Updates" HorizontalOptions="Center"/>
+                            <Switch x:Name="DeferUpdates" IsToggled="false" HorizontalOptions="Center"/>
+                        </StackLayout>
+
+                        <StackLayout Orientation="Horizontal">
+                            <Label BindingContext="{x:Reference DeferalDistance}" Text="{Binding Value,
+                          StringFormat='Deferal Distance = {0:F0} Meters'}"/>
+                            <Stepper x:Name="DeferalDistance" Maximum="1000"  Minimum="0" Increment="10" Value="10"/>
+                        </StackLayout>
+
+                        <StackLayout Orientation="Horizontal">
+                            <Label BindingContext="{x:Reference DeferalTIme}" Text="{Binding Value,
+                          StringFormat='Deferal Distance = {0:F0} Seconds'}"/>
+                            <Stepper x:Name="DeferalTIme" Maximum="120"  Minimum="1" Increment="1" Value="1"/>
+                        </StackLayout>
+
+                        <Label Text="Activity Type"/>
+                        <Picker x:Name="ActivityTypePicker">
+                            <Picker.Items>
+                                <x:String>Other</x:String>
+                                <x:String>Automotive Navigation</x:String>
+                                <x:String>Fitness</x:String>
+                                <x:String>Other Navigation</x:String>
+                            </Picker.Items>
+                        </Picker>
+                    </StackLayout>
+
+
+                    <Label x:Name="labelGPSTrack"/>
+                    <Label x:Name="LabelCount"/>
+                </StackLayout>
+            </ScrollView>
+            <ListView Grid.Row="1"
+                x:Name="ListViewPositions"
+                CachingStrategy="RecycleElement"
+                RowHeight="-1"
+                HasUnevenRows="true">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10" Spacing="5">
+                                <Label Text="{Binding Timestamp, StringFormat='{}{0:MM/dd/yyyy a\\t h:mm tt}'}" FontSize="Small"/>
+                                <Label Text="{Binding Latitude}" FontSize="Micro"/>
+                                <Label Text="{Binding Longitude}" FontSize="Micro"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>-->
+
+        <!--<StackLayout Orientation="Horizontal">
+            <StackLayout HorizontalOptions="FillAndExpand">
+                <Label Text="dàdfdfasffasfa" />
+                <Button Text="a" HorizontalOptions="Start" HeightRequest="40" />
+            </StackLayout>
+            <Label Text="lb" HorizontalOptions="End"/>
+        </StackLayout>-->
+
+
+        <!--<StackLayout>
+            <ListView x:Name="lv" ItemsSource="{Binding L}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Label Text="{Binding DiaChi}"  />
+                                <Picker Title="Choose an Item" ItemsSource="{Binding pickerSource}" ItemDisplayBinding="{Binding bienkiemsoat}" SelectedItem="{Binding selected, Mode=TwoWay}" Grid.Column="1" />
+                                <Label Text="{Binding selected.bienkiemsoat, Mode=TwoWay}" Grid.Row="1" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button Text="ok" Clicked="Button_Clicked" />
+        </StackLayout>-->
+
+        <!--<StackLayout>
+            --><!--<Image Source="journey.png" HorizontalOptions="Center" BackgroundColor="Yellow" />
+            <control:TitleWithIcon Icon="journey.png" Title="tiêu đề" HorizontalOptions="Center"  FontSize="18" />
+            <Label x:Name="lb" Text="tiêu đề" HorizontalOptions="Center" />--><!--
+            <Grid  RowSpacing="0" ColumnSpacing="0" HorizontalOptions="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="3" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Image Source="journey.png" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="100"  />
+                <Label Text="tiêu đề" Grid.Row="1" VerticalOptions="Start" HorizontalOptions="Center" FontSize="13" />
+                <StackLayout BackgroundColor="Blue" Grid.Row="2" />
+            </Grid>
+        </StackLayout>-->
+    </ContentPage.Content>
+</ContentPage>

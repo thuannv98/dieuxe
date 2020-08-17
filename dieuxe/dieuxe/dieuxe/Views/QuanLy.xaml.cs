@@ -1,9 +1,11 @@
-﻿using dieuxe.Models;
+﻿using dieuxe.Helpers;
+using dieuxe.Models;
 using dieuxe.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
@@ -14,23 +16,100 @@ namespace dieuxe.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class QuanLy : ContentPage
     {
-        public QuanLy()
+        public Action<ContentPage> PushPage;
+
+        void NavigateToPage(ContentPage page)
         {
-            InitializeComponent();
-            BanDo map = new BanDo();
-            BindingContext = new QuanLyVM();
+            PushPage?.Invoke(page);
         }
 
+
+        //sửa dòng này
+        private List<Xe> _listngunguoi;
+        public List<Xe> listngunguoi
+        {
+            get { return _listngunguoi; }
+            set
+            {
+                _listngunguoi = value;
+                OnPropertyChanged("listngunguoi");
+            }
+        }
+        
+        QuanLyVM quanlyviewmodel;
+        public QuanLy()
+        {
+            listngunguoi = new List<Xe> { new Xe { BienSoXe = "ngu" }, new Xe { BienSoXe = "quá" } };
+            InitializeComponent();
+            //BanDo map = new BanDo();
+            //var bindingContext = new QuanLyVM();
+            BindingContext = quanlyviewmodel = new QuanLyVM();
+            ten.Text = Helpers.Settings.TenLienHe;
+
+        }
+        protected async  override void OnAppearing()
+        {
+            base.OnAppearing();
+            CancellationTokenSource cts = new CancellationTokenSource();
+            cts.Token.ThrowIfCancellationRequested();
+            var stopwatch = System.Diagnostics.Stopwatch.StartNew();
+            await quanlyviewmodel.LayDuLieu(cts);
+            //cts.Cancel();
+            //try
+            //{
+            //    await KiemTraThoiGian(stopwatch, cts);
+            //}
+            //catch (OperationCanceledException e)
+            //{
+            //    Console.WriteLine($"{nameof(OperationCanceledException)} thrown with message: {e.Message}");
+
+
+            //}
+            //finally
+            //{
+            //    cts.Dispose();
+            //}
+        }
+        private async Task KiemTraThoiGian(System.Diagnostics.Stopwatch stopwatch, CancellationTokenSource cts)
+        {
+            while (!quanlyviewmodel.LayDuLieuXong)
+            {
+                //if (cts.Token.IsCancellationRequested)
+                //{
+                //    cts.Token.ThrowIfCancellationRequested();
+                //}
+                if (stopwatch.Elapsed.TotalSeconds > 1)
+                {
+                    Console.WriteLine("time out..");
+
+                    bool action = await DisplayAlert("Đã xảy ra sự cố", "Mất nhiều thời gian để cập nhật dữ liệu.\n Bạn có muốn tải lại trang không?", "Có", "Tiếp tục chờ");
+                    
+                    if(action && cts != null)
+                    {
+                        cts.Cancel();
+                        cts = new CancellationTokenSource();
+                        stopwatch.Restart();
+                        quanlyviewmodel.LayDuLieu(cts);
+                    }
+                }
+                if(cts == null)
+                {
+                    stopwatch.Stop();
+                    break;
+                }
+            }
+
+        }
         private void chitietdangky(object sender, ItemTappedEventArgs e)
         {
-            var itemtapped = e.Item as lich;
-            chitietngaydangky.Text = itemtapped.ngaydangky;
-            chitietnhanvien.Text = itemtapped.nhanviendangky;
-            chitietsonguoi.Text = itemtapped.songuoi.ToString();
-            chitietnoidon.Text = itemtapped.noidi;
-            chitietnoiden.Text = itemtapped.noiden;
-            chitietgioden.Text = itemtapped.gioden;
-            chitietgiove.Text = itemtapped.giove;
+            var itemtapped = e.Item as DangKyLichChiTiet;
+            chitietngaydangky.Text = itemtapped.NgayDangKy;
+            //chitietnhanvien.Text = itemtapped.nhanviendangky;
+            chitietsonguoi.Text = itemtapped.SoNguoi.ToString();
+            chitietnoidon.Text = itemtapped.NoiDi;
+            chitietnoiden.Text = itemtapped.NoiDen;
+            chitietgioden.Text = itemtapped.GioDen;
+            chitietgiove.Text = itemtapped.GioVe;
 
             popupcontent.IsVisible = true;
             this.popuplayout.AnchorX = 0.5;
@@ -87,8 +166,18 @@ namespace dieuxe.Views
 
         private void buttonphantich_Clicked(object sender, EventArgs e)
         {
-            List<lich> dsdangky = danhsachdangky.ItemsSource as List<lich>;
-            Navigation.PushAsync(new BanDo(dsdangky));
+            if (!quanlyviewmodel.LayDuLieuXong)
+                return;
+
+            List<DangKyLichChiTiet> dsdangky = danhsachdangky.ItemsSource as List<DangKyLichChiTiet>;
+            //Navigation.PushAsync(new BanDo(dsdangky, this.BindingContext as QuanLyVM));
+            NavigateToPage(new BanDo(dsdangky, this.BindingContext as QuanLyVM));
+        }
+
+        private async void test_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new Page1());
+            Settings.AccessToken = "";
         }
     }
 }

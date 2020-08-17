@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:dieuxe" xmlns:local1="clr-namespace:dieuxe.Views"
+            mc:Ignorable="d"
+          NavigationPage.HasNavigationBar="False"
+            
+             x:Class="dieuxe.Views.MainTabbedPage">
+
+
+    <TabbedPage.Children>
+        <!--<NavigationPage x:Name="main" IsVisible="True" Title="Trang chủ"
+                    Icon="home.png">
+        <x:Arguments>
+            <local:MainPage Title="trang chủ" />
+        </x:Arguments>
+    </NavigationPage>-->
+
+
+        <!--<NavigationPage Title="Thông báo"
+              
+            Icon="notify.png">
+        <x:Arguments>
+            <local1:dangkythongtin/>
+        </x:Arguments>
+    </NavigationPage>
+    <NavigationPage Title="Tài khoản"
+                    Icon="menu.png">
+        <x:Arguments>
+            <local1:getuser />
+        </x:Arguments>
+    </NavigationPage>-->
+    </TabbedPage.Children>
+</TabbedPage>

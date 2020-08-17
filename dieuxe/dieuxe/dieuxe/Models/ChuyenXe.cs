@@ -17,6 +17,10 @@ namespace dieuxe.Models
         public string taixe { get; set; }
         public string bienkiemsoat { get; set; }
         public string trangthai { get; set; }
+        public int TrangThai { get; set; }      /// <summary>
+        /// ///
+        /// </summary>
         public string ghichu { get; set; }
+        public string DsDiemDung { get; set; }
     }
 }

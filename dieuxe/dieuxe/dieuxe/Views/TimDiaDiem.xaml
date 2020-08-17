@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:control="clr-namespace:dieuxe.CustomControl"
+             xmlns:conv="clr-namespace:dieuxe.Helpers"
+             xmlns:effect="clr-namespace:dieuxe.Effect"
+             mc:Ignorable="d"
+             x:Class="dieuxe.Views.TimDiaDiem">
+    <ContentPage.Content>
+        <RelativeLayout x:Name="content" Margin="10, 5">
+            <Grid x:Name="stackChonDiaDiem" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=1,Constant=0}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="40" />
+                </Grid.RowDefinitions>
+                <Frame x:Name="thanhtimkiem" CornerRadius="10" Margin="5, 5" Padding="0"  Grid.ColumnSpan="2">
+                    <Grid BackgroundColor="White" VerticalOptions="FillAndExpand" Padding="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"  />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="35" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="27" />
+                        </Grid.ColumnDefinitions>
+
+                        <Image Source="search.png" Margin="7" HeightRequest="35" />
+                        <control:BorderlessEntry x:Name="entryTimKiem" TextChanged="thanhtimkiem_TextChanged" Text="{Binding searchvalue}" 
+                                                 Style="{StaticResource EntryStyle}" FontSize="16"  Grid.Column="1" Grid.Row="0"
+                                                 Placeholder="Nhập để tìm kiếm..." />
+                        <Image Source="delete_text.png" Margin="0, 0, 15, 0" Grid.Column="2" IsVisible="false" >
+                            <Image.Resources>
+                                <conv:IsNullConverter x:Key="isNullConverter"/>
+                            </Image.Resources>
+                            <Image.Triggers>
+                                <DataTrigger TargetType="Image" Binding="{Binding Source={x:Reference entryTimKiem}, Path=Text}" Value="">
+                                    <Setter Property="IsVisible" Value="false" />
+                                </DataTrigger>
+                                <DataTrigger TargetType="Image" Binding="{Binding Source={x:Reference entryTimKiem}, Path=Text, Converter={StaticResource isNullConverter}}" Value="False">
+                                    <Setter Property="IsVisible" Value="true" />
+                                </DataTrigger>
+                            </Image.Triggers>
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="delete_text" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </Grid>
+                </Frame>
+
+                <control:GradientButton x:Name="LayViTriHienTai" StartColor="#4CB8C4" EndColor="#3CD3AD" BorderRadius="6" TextColor="White" HeightRequest="40"
+                                        GradientOrientation="Horizontal" Text="Vị trí hiện tại" Clicked="LayViTriHienTai_Clicked" 
+                                        Grid.Row="1" Grid.Column="0" Margin="5, 0"/>
+                <control:GradientButton x:Name="ChonTrenBanDo" StartColor="#4CB8C4" EndColor="#3CD3AD" BorderRadius="6" TextColor="White"
+                                        GradientOrientation="Horizontal" Text="Chọn trên bản đồ" Clicked="ChonTrenBanDo_Clicked" 
+                                        Grid.Row="1" Grid.Column="1" Margin="5, 0"/>
+            </Grid>
+
+            <Frame x:Name="frameLichSu" CornerRadius="10" Margin="5, 5" Padding="0" >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="6*" />
+                        <ColumnDefinition Width="4*" />
+                    </Grid.ColumnDefinitions>
+                    <Label Text="Các địa điểm gần đây" Style="{StaticResource labelStyle}" Padding="10, 15" />
+                    <control:GradientButton x:Name="xoatatcalichsu" Text="Xóa tất cả" Command="{Binding XoaTatCaLichSu}" 
+                                            HorizontalOptions="End" VerticalOptions="Center" Padding="5, 0"
+                                            StartColor="White" EndColor="White" BorderRadius="6" TextColor="Blue" HeightRequest="30"
+                                            GradientOrientation="Horizontal" Grid.Row="0" Grid.Column="1" Margin="5, 0" />
+                    <ListView x:Name="lvLichSu" ItemsSource="{Binding LichSuTimKiem}" ItemTapped="lvLichSu_ItemTapped" RowHeight="60"  Grid.Row="1" Grid.ColumnSpan="2" >
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid ColumnSpacing="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="25" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="30" />
+                                        </Grid.ColumnDefinitions>
+                                        
+                                        <Image Source="mark.png" VerticalOptions="Center" />
+                                        <Label Text="{Binding diadiem}" Style="{StaticResource labelStyle}" Padding="0,10" Grid.Column="1"  VerticalOptions="Center" />
+                                        <ImageButton Source="delete_text.png" Clicked="XoaLichSu" CommandParameter="{Binding .}" Margin="0,10" Padding="0,10" WidthRequest="20"  Grid.Column="2" />
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                </Grid>
+            </Frame>
+
+            <Frame x:Name="kq" CornerRadius="10" Margin="5, 5" Padding="0" IsVisible="false" BackgroundColor="White" >
+                <ListView x:Name="listkq" ItemsSource="{Binding Addresses}" IsVisible="True" ItemTapped="Listkq_ItemSelected" RowHeight="60">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding Address}" TextColor="DarkViolet"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Frame.Triggers>
+                    <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference entryTimKiem}, Path=Text}" Value="">
+                        <Setter Property="IsVisible" Value="false" />
+                    </DataTrigger>
+                </Frame.Triggers>
+            </Frame>
+            
+        </RelativeLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "58788754539",
+    "firebase_url": "https://dieuxe-78e16.firebaseio.com",
+    "project_id": "dieuxe-78e16",
+    "storage_bucket": "dieuxe-78e16.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:58788754539:android:9f80b147ae90502185ad2e",
+        "android_client_info": {
+          "package_name": "com.companyname.dieuxe"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "58788754539-m6hlbqqibaeqg9uk9hsqltfbsr4054bk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8FpQpgqDkS_fr4kd1vevuantOrZNWhGE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "58788754539-m6hlbqqibaeqg9uk9hsqltfbsr4054bk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

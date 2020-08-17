@@ -1,4 +1,5 @@
-﻿using dieuxe.ViewModels;
+﻿using dieuxe.Helpers;
+using dieuxe.ViewModels;
 using dieuxe.Views;
 using System;
 using System.Collections.Generic;
@@ -20,10 +21,10 @@ namespace dieuxe
         public MainPage()
         {
             InitializeComponent();
-            DisplayCurLocation();
-            this.mahoadiachi();
-            map.IsShowingUser = true;
-            this.BindingContext = new dangkylichViewmodel();
+            //DisplayCurLocation();
+            //this.mahoadiachi();
+            //map.IsShowingUser = true;
+            //this.BindingContext = new dangkylichViewmodel();
         }
         private void OnMapClicked(object sender, MapClickedEventArgs e)
         {
@@ -37,45 +38,46 @@ namespace dieuxe
                 Address = "ngu người 1 "
             };
         }
-        public async void DisplayCurLocation()
-        {
-            try
-            {
+        //public async void DisplayCurLocation()
+        //{
+        //    try
+        //    {
 
-                var request = new GeolocationRequest(GeolocationAccuracy.Medium);
-                var location = await Geolocation.GetLocationAsync(request);
+        //        var request = new GeolocationRequest(GeolocationAccuracy.Medium);
+        //        var location = await Geolocation.GetLocationAsync(request);
 
 
 
-                if (location != null)
-                {
-                    Position p = new Position(location.Latitude, location.Longitude);
-                    MapSpan mapSpan = MapSpan.FromCenterAndRadius(p, Distance.FromKilometers(.444));
-                    map.MoveToRegion(mapSpan);
-                    Console.WriteLine($"Latitude: {location.Latitude}, Longitude: {location.Longitude}, Altitude: {location.Altitude}");
-                }
-                else
-                {
-                    await DisplayAlert("Permission Denied", "dell kết nối đc gps", "OK");
-                }
-            }
-            catch (FeatureNotSupportedException fnsEx)
-            {
-                // Handle not supported on device exception
-            }
-            catch (FeatureNotEnabledException fneEx)
-            {
-                // Handle not enabled on device exception
-            }
-            catch (PermissionException pEx)
-            {
-                // Handle permission exception
-            }
-            catch (Exception ex)
-            {
-                // Unable to get location
-            }
-        }
+        //        if (location != null)
+        //        {
+        //            Position p = new Position(location.Latitude, location.Longitude);
+        //            MapSpan mapSpan = MapSpan.FromCenterAndRadius(p, Distance.FromKilometers(.444));
+        //            map.MoveToRegion(mapSpan);
+        //            Console.WriteLine($"Latitude: {location.Latitude}, Longitude: {location.Longitude}, Altitude: {location.Altitude}");
+        //        }
+        //        else
+        //        {
+        //            await DisplayAlert("Permission Denied", "dell kết nối đc gps", "OK");
+        //        }
+        //    }
+        //    catch (FeatureNotSupportedException fnsEx)
+        //    {
+        //        // Handle not supported on device exception
+        //    }
+        //    catch (FeatureNotEnabledException fneEx)
+        //    {
+        //        // Handle not enabled on device exception
+        //    }
+        //    catch (PermissionException pEx)
+        //    {
+        //        // Handle permission exception
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        // Unable to get location
+        //    }
+        //}
+        
         public async void mahoadiachi()
         {
             try
@@ -118,9 +120,22 @@ namespace dieuxe
             await Navigation.PushAsync(new getuser());
         }
 
-        private async void Map_Clicked(object sender, EventArgs e)
+        //private async void Map_Clicked(object sender, EventArgs e)
+        //{
+        //    await Navigation.PushAsync(new Views.Map());
+        //}
+
+
+
+        private async void changePW_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new Views.Map());
+            await Navigation.PushAsync(new ChangePWPage());
+        }
+
+        private async void dangxuat_Clicked(object sender, EventArgs e)
+        {
+            Settings.AccessToken = "";
+            await Navigation.PushModalAsync(new Login());
         }
     }
 }

@@ -27,7 +27,7 @@ namespace dieuxe.ViewModels
                     var accessToken = Settings.AccessToken;
                     var client = new HttpClient();
                     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-                    var response = await client.DeleteAsync("https://apidieuxe20200508212151.azurewebsites.net/api/lichdangki/" + Lich.sodangky);
+                    var response = await client.DeleteAsync("https://apidieuxe20200508212151.azurewebsites.net/api/lichdangki/" + Lich.DangKyLichId);
                     if (response.IsSuccessStatusCode)
                     {
                         await Application.Current.MainPage.DisplayAlert("Notify?", "deleted success!", "OK");
@@ -54,7 +54,7 @@ namespace dieuxe.ViewModels
                     var json = JsonConvert.SerializeObject(Lich);
                     HttpContent content = new StringContent(json);
                     content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-                    var response = await client.PutAsync("https://apidieuxe20200508212151.azurewebsites.net/api/lichdangki/" + Lich.sodangky, content);
+                    var response = await client.PutAsync("https://apidieuxe20200508212151.azurewebsites.net/api/lichdangki/" + Lich.DangKyLichId, content);
                     if (response.IsSuccessStatusCode)
                     {
                         await Application.Current.MainPage.DisplayAlert("Notify?", "cập nhật thành công !", "OK");

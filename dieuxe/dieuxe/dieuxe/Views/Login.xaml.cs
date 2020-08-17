@@ -1,4 +1,6 @@
-﻿using System;
+﻿using dieuxe.Helpers;
+using dieuxe.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,9 +14,13 @@ namespace dieuxe.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Login : ContentPage
     {
-        public Login()
+        public Login(int tabindex = 0)
         {
             InitializeComponent();
+            BindingContext = new Login_ViewModels();
+
+            loginButton.SetBinding(Button.CommandParameterProperty, new Binding(tabindex.ToString()));
         }
+
     }
 }
